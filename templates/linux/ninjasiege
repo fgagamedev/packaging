@@ -1,0 +1,4 @@
+#!/bin/bash
+cd /usr/games/ninja
+export LD_LIBRARY_PATH=/usr/games/ninja/lib
+bin/ninjasiege
