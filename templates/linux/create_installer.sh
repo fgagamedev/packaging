@@ -27,17 +27,17 @@ function debian_package
 }
 
 # Generates a Qt installer (user friendly)
-QT_PACKAGE_DATA_DIR=dist/$SYSTEM/packages/ninja/data
+QT_PACKAGE_DATA_DIR=dist/$SYSTEM/packages/$project_name/data
 function qt_package
 {
     echo "Building Qt package..."
     mkdir -p $QT_PACKAGE_DATA_DIR
     rm -f $QT_PACKAGE_DATA_DIR/*.7z
     echo $BIN_DIR
-    Qt/QtIFW2.0.5/bin/archivegen data.7z $BIN_DIR media
+    Qt/QtIFW2.0.5/bin/archivegen data.7z $BIN_DIR media resources
     mv data.7z $QT_PACKAGE_DATA_DIR
     cd $DIST_DIR
-    ../../Qt/QtIFW2.0.5/bin/binarycreator -c config/config.xml -p packages ninjasiegeSetup.sh
+    ../../Qt/QtIFW2.0.5/bin/binarycreator -c config/config.xml -p packages ${project_name}Setup.sh
     cd $CUR_DIR
     mv $DIST_DIR/*.sh $DIST_BIN_DIR
     echo "Done"

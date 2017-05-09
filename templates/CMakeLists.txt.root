@@ -83,7 +83,7 @@ ExternalProject_Add(
 subdirs(src)
 
 # Packing
-set(CPACK_PACKAGE_NAME "$lib_name")
+set(CPACK_PACKAGE_NAME "$project_name")
 set(CPACK_PACKAGE_VERSION_MAJOR "1")
 set(CPACK_PACKAGE_VERSION_MINOR "0")
 set(CPACK_PACKAGE_VERSION_PATCH "1")

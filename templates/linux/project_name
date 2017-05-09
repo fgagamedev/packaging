@@ -1,0 +1,4 @@
+#!/bin/bash
+cd /usr/games/$project_name
+export LD_LIBRARY_PATH=/usr/games/$project_name/lib
+bin/$project_name

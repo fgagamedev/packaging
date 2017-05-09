@@ -31,7 +31,7 @@ pwd
 cmake ../.. -DCMAKE_TOOLCHAIN_FILE=../../linux/Linux.cmake
 make
 cd ../..
-cp $SYSTEM_BUILD_DIR/$SRC_DIR/ninjasiege $SYSTEM_BIN_DIR
+cp $SYSTEM_BUILD_DIR/$SRC_DIR/$project_name $SYSTEM_BIN_DIR
 cp $SDL_LIB_DIR/libSDL-1.2.so.0 $SYSTEM_BIN_LIB_DIR
 cp $SDL_LIB_DIR/libSDL_image-1.2.so.0 $SYSTEM_BIN_LIB_DIR
 cp $SDL_LIB_DIR/libSDL_mixer-1.2.so.0 $SYSTEM_BIN_LIB_DIR
