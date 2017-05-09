@@ -45,6 +45,16 @@ ExternalProject_Add(
     INSTALL_COMMAND $(MAKE) install
 )
 
+## SDL_net
+ExternalProject_Add(
+    SDL_net
+    PREFIX lib
+    URL ${LIB_SRC_DIR}/SDL_net-1.2.8.tar.gz
+    CONFIGURE_COMMAND <SOURCE_DIR>/configure --prefix=${SDL_PREFIX} --with-sdl-prefix=${SDL_PREFIX} ${SDL_NET_CONFIGURE_OPTIONS}
+    BUILD_COMMAND $(MAKE)
+    INSTALL_COMMAND $(MAKE) install
+)
+
 ## SDL_image
 ExternalProject_Add(
     SDL_mixer

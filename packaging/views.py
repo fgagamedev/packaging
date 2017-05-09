@@ -54,6 +54,12 @@ class PackageViewSet(viewsets.ViewSet):
         shutil.copytree('templates/dist', 'repo/dist')
         shutil.copytree('templates/linux', 'repo/linux')
 
+        dirs = os.listdir('repo')
+        if 'media' in dirs:
+            self.project['media_dir'] = 'media'
+        elif 'resources' in dirs:
+            self.project['media_dir'] = 'resources'
+
         tmp_files = os.listdir('repo/src')
         src_files = ''
         for src in tmp_files:
