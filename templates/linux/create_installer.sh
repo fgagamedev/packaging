@@ -1,4 +1,4 @@
-# !/bin/bash
+#!/bin/bash
 #
 # Generate the game installer for Linux platform.
 #

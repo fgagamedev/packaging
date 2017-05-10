@@ -1,4 +1,4 @@
-# !/bin/bash
+#!/bin/bash
 # Author: Edson Alves - edsonalves@unb.br
 # Date: 10/03/2017
 

@@ -3,38 +3,27 @@ import os
 import shutil
 import string
 import subprocess as sp
-
-import requests
-
-from rest_framework import viewsets
-from rest_framework.response import Response
+import sys
 
 
-class PackageViewSet(viewsets.ViewSet):
-    project = {
-        'project_name': 'Ankh',
-        'lib_name': 'Ankh_lib',
-        'release_date': date.today()
-    }
+class Repository:
 
-    def clone(self, request, *args, **kwargs):
-        args = ['rm', '-rfv', 'repo/']
+    def __init__(self, url, branch='master', name=None):
+        os.chdir('..')
+        self.project = {
+            'project_name': 'Ankh',
+            'lib_name': 'Ankh_lib',
+            'release_date': date.today()
+        }
+
+        args = ['rm', '-rf', 'repo/']
         sp.call(args)
 
-        url = request.data['url']
-        try:
-            branch = request.data['branch']
-        except:
-            branch = 'master'
         args = ['git', 'clone', url, 'repo', '-b', branch]
-
         sp.call(args)
-        self.project['url'] = url
 
-        try:
-            name = request.data['name']
-        except:
-            name = request.data['url'].split('/')[-1]
+        if name is None:
+            name = url.split('/')[-1]
             name = name.split('.')[0]
             name = name.lower()
 
@@ -45,18 +34,6 @@ class PackageViewSet(viewsets.ViewSet):
             self.project['lib_name'] = self.project['lib_name'][0]
         else:
             self.project['lib_name'] = self.project['lib_name'][0] + '_lib'
-
-        return Response()
-
-    def make(self, request, *args, **kwargs):
-        self.copy_files()
-        self.find_media()
-        self.find_source()
-        self.replace_info()
-        self.rename()
-        self.build()
-
-        return Response('Maybe', status=200)
 
     def find_media(self):
         dirs = os.listdir('repo')
@@ -136,4 +113,12 @@ class PackageViewSet(viewsets.ViewSet):
             f.write(text.safe_substitute(**self.project))
 
 
-
+if __name__ == '__main__':
+    args = sys.argv
+    rep = Repository(url=args[1], branch=args[2])
+    rep.copy_files()
+    rep.find_media()
+    rep.find_source()
+    rep.replace_info()
+    rep.rename()
+    rep.build()
