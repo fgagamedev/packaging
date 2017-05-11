@@ -27,21 +27,26 @@ class Repository:
             name = name.split('.')[0]
             name = name.lower()
 
-        self.project['project_name'] = name
+        self.project['project_name'] = name.replace('-', '_')
 
-        self.project['lib_name'] = self.project['project_name'].split('-')
+        self.project['lib_name'] = self.project['project_name'].split('_')
         if len(self.project['lib_name']) > 1:
             self.project['lib_name'] = self.project['lib_name'][0]
         else:
             self.project['lib_name'] = self.project['lib_name'][0] + '_lib'
 
     def find_media(self):
-        dirs = os.listdir('repo')
-        if 'media' in dirs:
-            self.project['media_dir'] = 'media'
-        elif 'resources' in dirs:
-            self.project['media_dir'] = 'resources'
+        os.chdir('repo')
 
+        dirs = os.listdir()
+        if 'resources' in dirs:
+            self.project['media_dir'] = 'resources'
+        elif 'res' in dirs:
+            self.project['media_dir'] = 'res'
+        elif 'media' in dirs:
+            self.project['media_dir'] = 'media'
+
+        os.chdir('..')
 
     def build(self):
         os.chdir('repo')
@@ -73,7 +78,7 @@ class Repository:
         os.chdir('repo')
         sp.call(['rm', '-rf'] + root_folders)
         os.chdir('..')
-        print(os.listdir())
+        # print(os.listdir())
 
         for folder in root_folders:
             shutil.copytree('templates/'+ folder, 'repo/' + folder)
