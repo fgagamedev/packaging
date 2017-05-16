@@ -84,13 +84,18 @@ class Repository:
             shutil.copytree('templates/'+ folder, 'repo/' + folder)
 
     def find_source(self):
-        tmp_files = os.listdir('repo/src')
+        os.chdir('repo/src')
+        tmp_files = os.walk('.')
         src_files = ''
-        for src in tmp_files:
-            if src.find('.c') > 0:
-                src_files = src_files + src + ' '
+        for root, subfolders, files in tmp_files:
+            root += '/' # Add a final slash
+            root = root[2:] # Remove './' if it exists
+            for f in files:
+                if f.find('.c') > 0:
+                    src_files = src_files + root + f + ' '
 
         self.project['source_files'] = src_files
+        os.chdir('../..')
 
     def replace_info(self):
         files = (
