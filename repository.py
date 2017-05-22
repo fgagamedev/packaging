@@ -14,6 +14,7 @@ class Repository:
             'lib_name': 'Ankh_lib',
             'release_date': date.today(),
             'src_folder': 'src',
+            'url': url
         }
 
         args = ['rm', '-rf', 'repo/']
@@ -73,6 +74,7 @@ class Repository:
         shutil.copy2('templates/CMakeLists.txt.root', 'repo/CMakeLists.txt')
         shutil.copy2('templates/CMakeLists.txt.src',
                      'repo/'+ self.project['src_folder'] + '/CMakeLists.txt')
+        shutil.copy2('templates/icon.png', 'repo/icon.png')
 
         root_folders = [
             'lib',

@@ -37,7 +37,7 @@ function qt_package
     Qt/QtIFW2.0.5/bin/archivegen data.7z $BIN_DIR $media_dir $src_folder
     mv data.7z $QT_PACKAGE_DATA_DIR
     cd $DIST_DIR
-    ../../Qt/QtIFW2.0.5/bin/binarycreator -c config/config.xml -p packages ${project_name}Setup.sh
+    ../../Qt/QtIFW2.0.5/bin/binarycreator -c config/config.xml -p packages ${project_name}_setup.sh
     cd $CUR_DIR
     mv $DIST_DIR/*.sh $DIST_BIN_DIR
     echo "Done"
