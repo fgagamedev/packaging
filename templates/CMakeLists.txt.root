@@ -90,7 +90,7 @@ ExternalProject_Add(
 )
 
 # Game
-subdirs(src)
+subdirs($src_folder)
 
 # Packing
 set(CPACK_PACKAGE_NAME "$project_name")

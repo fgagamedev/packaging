@@ -10,7 +10,7 @@ SYSTEM=linux
 
 # Directories
 BIN_DIR=bin
-SRC_DIR=src
+SRC_DIR=$src_folder
 LIB_DIR=lib
 BUILD_DIR=build
 

@@ -35,6 +35,9 @@ class Repository:
         else:
             self.project['lib_name'] = self.project['lib_name'][0] + '_lib'
 
+        self.project['src_folder'] = 'src' if 'src' in os.listdir('repo') else 'source'
+
+
     def find_media(self):
         os.chdir('repo')
 
@@ -45,6 +48,8 @@ class Repository:
             self.project['media_dir'] = 'res'
         elif 'media' in dirs:
             self.project['media_dir'] = 'media'
+        elif 'sounds' in dirs:
+            self.project['media_dir'] = 'sounds'
 
         os.chdir('..')
 
@@ -85,7 +90,6 @@ class Repository:
             shutil.copytree('templates/'+ folder, 'repo/' + folder)
 
     def find_source(self):
-        self.project['src_folder'] = 'src' if 'src' in os.listdir('repo') else 'source'
         os.chdir('repo/' + self.project['src_folder'])
 
         tmp_files = os.walk('.')
