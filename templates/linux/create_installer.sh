@@ -34,7 +34,7 @@ function qt_package
     mkdir -p $QT_PACKAGE_DATA_DIR
     rm -f $QT_PACKAGE_DATA_DIR/*.7z
     echo $BIN_DIR
-    Qt/QtIFW2.0.5/bin/archivegen data.7z $BIN_DIR $media_dir
+    Qt/QtIFW2.0.5/bin/archivegen data.7z $BIN_DIR $media_dir $src_folder
     mv data.7z $QT_PACKAGE_DATA_DIR
     cd $DIST_DIR
     ../../Qt/QtIFW2.0.5/bin/binarycreator -c config/config.xml -p packages ${project_name}Setup.sh
