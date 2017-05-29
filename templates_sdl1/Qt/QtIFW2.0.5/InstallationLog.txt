@@ -1,0 +1,31 @@
+************************************* Invoked: Wed May 3 12:33:25 2017
+[0] Arguments:  ./tools/QtInstallerFramework-linux-x64.run
+[9] Operations sanity check succeeded.
+[11534] Tmp and install folder are on the same volume. Volume mount point: "/" Free space available: "33.40 GiB"
+[11534] Installation space required: "147.63 MiB" Temporary space required: "0.00 bytes" Local repository size: "0.00 bytes"
+[12450] perform  operation: Mkdir
+[12450] \t- arguments: /vagrant/Qt
+[12452] Done
+[12452] backup  operation: Mkdir
+[12452] \t- arguments: /vagrant/Qt/QtIFW2.0.5
+[12453] Done
+[12453] perform  operation: Mkdir
+[12453] \t- arguments: /vagrant/Qt/QtIFW2.0.5
+[12502] Done
+[12503] Install size: 2 components
+[12545] backup org.qtproject.ifw operation: License
+[12545] \t- arguments: 
+[12545] Done
+[12545] perform org.qtproject.ifw operation: License
+[12545] \t- arguments: 
+[12547] Done
+[12548] backup org.qtproject.ifw.binaries operation: Extract
+[12548] \t- arguments: installer://org.qtproject.ifw.binaries/2.0.5data.7z, /vagrant/Qt/QtIFW2.0.5
+[12548] Done
+[12548] perform org.qtproject.ifw.binaries operation: Extract
+[12548] \t- arguments: installer://org.qtproject.ifw.binaries/2.0.5data.7z, /vagrant/Qt/QtIFW2.0.5
+[18964] Done
+[18977] Writing maintenance tool: "/vagrant/Qt/QtIFW2.0.5/Uninstaller.new"
+[19187] Wrote permissions for maintenance tool.
+[19229] Maintenance tool restart: false.
+[19230] SHOW FINISHED PAGE

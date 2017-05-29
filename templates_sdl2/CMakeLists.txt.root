@@ -1,0 +1,102 @@
+cmake_minimum_required(VERSION 2.6)
+cmake_policy(SET CMP0011 NEW)
+project($project_name)
+
+# Project directories
+set(ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+set(BIN_DIR ${ROOT_DIR}/bin)
+set(BUILD_DIR ${ROOT_DIR}/build)
+set(LIB_DIR ${ROOT_DIR}/lib)
+set(LIB_SRC_DIR ${LIB_DIR}/src)
+set(PATCHES_DIR ${LIB_DIR}/patches)
+
+# System directories
+set(SYSTEM_DIR ${ROOT_DIR}/${SYSTEM})
+set(SYSTEM_LIB_DIR ${LIB_DIR}/${SYSTEM})
+set(SYSTEM_BIN_DIR ${BIN_DIR}/${SYSTEM})
+set(SYSTEM_BIN_LIB_DIR ${SYSTEM_BIN_DIR}/lib)
+set(SYSTEM_BUILD_DIR ${BUILD_DIR}/${SYSTEM})
+set(SYSTEM_BUILD_LIB_SRC_DIR ${SYSTEM_BUILD_DIR}/lib/src)
+
+# External projects
+include(ExternalProject)
+
+## SDL
+set(SDL_PREFIX ${SYSTEM_LIB_DIR}/SDL2)
+set(SDL_INCLUDE_DIR ${SDL_PREFIX}/include/SDL2)
+
+ExternalProject_Add(
+    SDL
+    PREFIX lib
+    URL ${LIB_SRC_DIR}/SDL2-2.0.5.tar.gz
+    CMAKE_COMMAND cmake -DCMAKE_INSTALL_PREFIX=${SYSTEM_LIB_DIR}/SDL2
+)
+
+## SDL_image
+ExternalProject_Add(
+    SDL_image
+    PREFIX lib
+    URL ${LIB_SRC_DIR}/SDL2_image-2.0.1.tar.gz
+    CONFIGURE_COMMAND <SOURCE_DIR>/configure --prefix=${SDL_PREFIX} --with-sdl-prefix=${SDL_PREFIX}
+    BUILD_COMMAND $(MAKE)
+    INSTALL_COMMAND $(MAKE) install
+)
+
+## SDL_mixer
+ExternalProject_Add(
+    SDL_mixer
+    PREFIX lib
+    URL ${LIB_SRC_DIR}/SDL2_mixer-2.0.1.tar.gz
+    CONFIGURE_COMMAND <SOURCE_DIR>/configure --prefix=${SDL_PREFIX} --with-sdl-prefix=${SDL_PREFIX}
+    BUILD_COMMAND $(MAKE)
+    INSTALL_COMMAND $(MAKE) install
+)
+
+## SDL_gfx
+ExternalProject_Add(
+    SDL_gfx
+    PREFIX lib
+    URL ${LIB_SRC_DIR}/SDL2_gfx-1.0.3.tar.gz
+    CONFIGURE_COMMAND <SOURCE_DIR>/configure --prefix=${SDL_PREFIX} --with-sdl-prefix=${SDL_PREFIX}
+    BUILD_COMMAND $(MAKE)
+    INSTALL_COMMAND $(MAKE) install
+)
+
+## FreeType
+set(FREETYPE_PREFIX ${SYSTEM_LIB_DIR}/FreeType-2.4)
+set(FREETYPE_INCLUDE_DIR ${FREETYPE_PREFIX}/include ${FREETYPE_PREFIX}/include/freetype2)
+
+ExternalProject_Add(
+    FreeType
+    PREFIX lib
+    URL ${LIB_SRC_DIR}/freetype-2.4.0.tar.gz
+    CONFIGURE_COMMAND <SOURCE_DIR>/configure --prefix=${FREETYPE_PREFIX} ${FREETYPE_CONFIGURE_OPTIONS}
+    BUILD_COMMAND $(MAKE)
+    INSTALL_COMMAND $(MAKE) install
+)
+
+## SDL_ttf
+ExternalProject_Add(
+    SDL_ttf
+    PREFIX lib
+    URL ${LIB_SRC_DIR}/SDL2_ttf-2.0.14.tar.gz
+    CONFIGURE_COMMAND <SOURCE_DIR>/configure --prefix=${SDL_PREFIX} --with-sdl-prefix=${SDL_PREFIX}
+    BUILD_COMMAND $(MAKE)
+    INSTALL_COMMAND $(MAKE) install
+)
+
+# Game
+subdirs($src_folder)
+
+# Packing
+set(CPACK_PACKAGE_NAME "$project_name")
+set(CPACK_PACKAGE_VERSION_MAJOR "1")
+set(CPACK_PACKAGE_VERSION_MINOR "0")
+set(CPACK_PACKAGE_VERSION_PATCH "1")
+set(CPACK_PACKAGE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/COPYING")
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "LVDJ - Laboratório Virtual de Desenvolvimento de Jogos")
+
+set(CPACK_PACKAGING_INSTALL_PREFIX "/usr/games")
+set(CPACK_GENERATOR "DEB")
+
+include(CPack)
