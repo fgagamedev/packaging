@@ -10,4 +10,4 @@ set(SDL_CONFIGURE_OPTIONS --enable-video-x11 --enable-x11-shared --enable-video-
 # set(FREETYPE_CONFIGURE_OPTIONS "")
 # set(SDL_TTF_CONFIGURE_OPTIONS "")
 
-set(SYSTEM_LIBRARIES libSDL2.so libSDL2_image.so libSDL2_ttf.so libSDL2_mixer.so libSDL2_gfx.so)
+set(SYSTEM_LIBRARIES libSDL2.so libSDL2_image.so libSDL2_ttf.so libSDL2_mixer.so libSDL2_gfx.so libSDL2_net.so)

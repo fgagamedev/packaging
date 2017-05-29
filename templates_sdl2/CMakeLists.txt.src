@@ -11,6 +11,14 @@ add_executable($project_name main.cpp)
 
 target_link_libraries($project_name $lib_name ${SYSTEM_LIBRARIES})
 
+find_package(Threads REQUIRED)
+if(THREADS_HAVE_PTHREAD_ARG)
+  target_compile_options(PUBLIC $project_name "-pthread")
+endif()
+if(CMAKE_THREAD_LIBS_INIT)
+  target_link_libraries($project_name "${CMAKE_THREAD_LIBS_INIT}")
+endif()
+
 install(TARGETS $project_name DESTINATION $project_name/bin)
 install(PROGRAMS ${SYSTEM_DIR}/$project_name DESTINATION .)
 install(DIRECTORY ${SYSTEM_BIN_DIR}/lib/ DESTINATION $project_name/lib)
