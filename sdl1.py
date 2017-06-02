@@ -50,6 +50,8 @@ class Repository:
             self.project['media_dir'] = 'media'
         elif 'sounds' in dirs:
             self.project['media_dir'] = 'sounds'
+        elif 'data' in dirs:
+            self.project['media_dir'] = 'data'
 
         os.chdir('..')
 

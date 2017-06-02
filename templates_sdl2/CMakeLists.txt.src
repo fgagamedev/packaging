@@ -1,6 +1,6 @@
 # Directories
-include_directories(${${project_name}_SOURCE_DIR}/include ${SYSTEM_LIB_DIR}/SDL2/include)
-link_directories(${SYSTEM_LIB_DIR}/SDL2/lib ${LIB_DIR}/)
+include_directories(${${project_name}_SOURCE_DIR}/include ${SYSTEM_LIB_DIR}/SDL2/include ${SYSTEM_LIB_DIR}/ijengine/include)
+link_directories(${SYSTEM_LIB_DIR}/SDL2/lib ${SYSTEM_LIB_DIR}/ijengine/lib ${LIB_DIR}/)
 
 # Compile options
 add_compile_options(-std=c++11)
@@ -9,7 +9,7 @@ add_compile_options(-std=c++11)
 add_library($lib_name $source_files)
 add_executable($project_name main.cpp)
 
-target_link_libraries($project_name $lib_name ${SYSTEM_LIBRARIES})
+target_link_libraries($project_name $lib_name ${SYSTEM_LIBRARIES} -ldl)
 
 find_package(Threads REQUIRED)
 if(THREADS_HAVE_PTHREAD_ARG)
