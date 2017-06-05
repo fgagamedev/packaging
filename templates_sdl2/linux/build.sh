@@ -39,4 +39,5 @@ cp $SDL_LIB_DIR/libSDL2_mixer-2.0.so.0 $SYSTEM_BIN_LIB_DIR
 cp $SDL_LIB_DIR/libSDL2_gfx-1.0.so.0 $SYSTEM_BIN_LIB_DIR
 cp $SDL_LIB_DIR/libSDL2_net-2.0.so.0 $SYSTEM_BIN_LIB_DIR
 cp $SYSTEM_LIB_DIR/ijengine/lib/libijengine.a $SYSTEM_BIN_LIB_DIR
+cp $SYSTEM_LIB_DIR/ijengine/lib/kernel.so.0.1.0 $SYSTEM_BIN_LIB_DIR
 # cp $FREETYPE_LIB_DIR/libfreetype.so.6.5.0 $SYSTEM_BIN_LIB_DIR

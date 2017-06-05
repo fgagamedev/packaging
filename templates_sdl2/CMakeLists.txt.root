@@ -102,7 +102,7 @@ ExternalProject_Add(
     URL ${LIB_SRC_DIR}/ijengine-0.3.0.tar.gz
     CONFIGURE_COMMAND ""
     BUILD_COMMAND cd <SOURCE_DIR> && EXT_LIBS="-L${SDL_PREFIX}/lib" EXT_INCLUDES="-I${SDL_PREFIX}/include" $(MAKE)
-    INSTALL_COMMAND cd <SOURCE_DIR> && $(MAKE) install INSTALL_DIR=${SYSTEM_LIB_DIR}/ijengine
+    INSTALL_COMMAND cd <SOURCE_DIR> && $(MAKE) install INSTALL_DIR=${SYSTEM_LIB_DIR}/ijengine && cp kernel/sdl2/kernel.so.0.1.0 lib
 )
 
 # Game

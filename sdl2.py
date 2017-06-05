@@ -84,7 +84,6 @@ class Repository:
         os.chdir('repo')
         sp.call(['rm', '-rf'] + root_folders)
         os.chdir('..')
-        # print(os.listdir())
 
         for folder in root_folders:
             shutil.copytree('templates_sdl2/'+ folder, 'repo/' + folder)
