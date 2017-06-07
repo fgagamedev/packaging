@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package>
+    <DisplayName>$project_name</DisplayName>
+    <Description>$project_name</Description>
+    <Version>1.0.0.1</Version>
+    <ReleaseDate>$release_date</ReleaseDate>
+    <Licenses>
+        <License name="License" file="license.txt"/>
+    </Licenses>
+    <Script>launcher.qs</Script>
+    <Default>true</Default>
+</Package>

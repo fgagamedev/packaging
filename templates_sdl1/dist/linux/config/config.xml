@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Installer>
+    <Name>$project_name</Name>
+    <Version>0.0.1</Version>
+    <Title>$project_name</Title>
+    <Publisher>Laboratório Virtual de Desenvolvimento de Jogos</Publisher>
+    <StartMenuDir>$project_name</StartMenuDir>
+    <TargetDir>@HomeDir@/$project_name</TargetDir>
+</Installer>
+
